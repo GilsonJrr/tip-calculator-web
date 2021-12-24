@@ -4,7 +4,7 @@ import Dolar from './Image/Dolar.png';
 import Person from './Image/icon-person.png';
 import LogoApp from './Image/Logo.png';
 
-import { BackgroundApp, BackCalculator, Logo, BackResult, DivInput, InputValue, 
+import { BackgroundApp, BackCalculator, Logo, BackResult, DivInput, InputValue, DviButton,
          Button, TextInput, TextResult, TextValue, DivResult, ButtonReset, InputNumber } from './Style/GlobalStyle';
 
 function App() {
@@ -37,7 +37,8 @@ function App() {
           </InputValue>
 
           <TextInput style={{marginTop: 57}} >Select Tip %</TextInput>
-          <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
+          
+          <DviButton>
           {buttons.map((item) => {
             return(
               <div key={item.id}>
@@ -49,7 +50,7 @@ function App() {
               </div>
             );
           })}
-          </div>
+          </DviButton>
           
           <TextInput style={{marginTop: 42}} >Number of People</TextInput>
           <InputValue> 

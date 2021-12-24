@@ -12,27 +12,46 @@ export const BackgroundApp = styled.div`
 export const Logo = styled.div`
     position: absolute;
     top: 136px;
+    @media(max-width: 375px){
+        top: 60px;
+    }
 `;
 
 export const BackCalculator = styled.div`
     //web
     width: 920px;
     height: 480px;
-    //mobile
     background: #FFFFFF;
     border-radius: 25px;
     display: flex;
+    //mobile
+    @media(max-width: 375px){
+        margin-top: 200px;
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const BackResult = styled.div`
     width: 50%;
-    height: 420px;
     background: #00474B;
     border-radius: 15px;
     margin: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media(max-width: 375px){
+        width: 85%;
+        height: 250px;
+        margin: 10px;
+    }
 `;
 
 export const DivResult = styled.div`
@@ -44,6 +63,11 @@ export const DivResult = styled.div`
     align-items: center; 
     margin-top: 26px; 
     margin-bottom: 26px;
+    @media(max-width: 375px){
+        margin-top: 5px;
+        margin-bottom: 0px;
+        width: 85%;
+    }
 `;
 
 export const DivInput = styled.div`
@@ -51,6 +75,9 @@ export const DivInput = styled.div`
     margin: 40px;
     flex-direction: column;
     width: 50%;
+    @media(max-width: 375px){
+        width: 100%;
+    }
 `;
 
 export const InputValue = styled.div`
@@ -63,6 +90,11 @@ export const InputValue = styled.div`
     justify-content: space-between;
     //padding-left: 13px;
     padding-right: 13px;
+    @media(max-width: 375px){
+        width: 85%;
+        align-self: center;
+        margin-bottom: -30px;
+    }
 `;
 
 export const Button = styled.button`
@@ -80,6 +112,23 @@ export const Button = styled.button`
     font-weight: bold;
     font-size: 24px;
     color: #FFFFFF;
+
+    @media(max-width: 375px){
+        align-self: center;
+        width: 152px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+`;
+
+export const DviButton = styled.div`
+    display: flex;
+    flex-wrap: wrap; 
+    width: 100%;
+    @media(max-width: 375px){
+        align-self: center;
+        width: 90%;
+    }
 `;
 
 export const ButtonReset = styled.button`
@@ -96,6 +145,10 @@ export const ButtonReset = styled.button`
     font-weight: bold;
     font-size: 18px;
     color: #00474B;
+    @media(max-width: 375px){
+        margin-top: 30px;
+        width: 85%;
+    }
 `;
 
 export const TextInput = styled.div`
@@ -105,6 +158,9 @@ export const TextInput = styled.div`
     font-size: 18px;
     color: #406566;
     margin-bottom: 4px;
+    @media(max-width: 375px){
+        padding-left: 35px;
+    }
 `;
 
 export const TextResult = styled.div`
@@ -113,6 +169,9 @@ export const TextResult = styled.div`
     font-weight: bold;
     font-size: 18px;
     color: #FFFFFF;
+    @media(max-width: 375px){
+        font-size: 14px;
+    }
 `;
 
 export const TextValue = styled.div`
@@ -121,6 +180,9 @@ export const TextValue = styled.div`
     font-weight: bold;
     font-size: 48px;
     color: #33C0AF;
+    @media(max-width: 375px){
+        font-size: 32px;
+    }
 `;
 
 export const InputNumber = styled.input`
@@ -134,4 +196,8 @@ export const InputNumber = styled.input`
     font-size: 28px;
     text-align: right;
     color: #A8BBBC;
+    @media(max-width: 375px){
+        text-align: right;
+        font-size: 23px;
+    }
 `;

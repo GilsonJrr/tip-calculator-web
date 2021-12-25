@@ -7,13 +7,17 @@ export const BackgroundApp = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media(max-width: 375px){
+        height: 100%;
+    }
 `;
 
 export const Logo = styled.div`
     position: absolute;
     top: 136px;
     @media(max-width: 375px){
-        top: 60px;
+        top: 30px;
+        position: relative;
     }
 `;
 
@@ -26,9 +30,9 @@ export const BackCalculator = styled.div`
     display: flex;
     //mobile
     @media(max-width: 375px){
-        margin-top: 200px;
+        margin-top: 60px;
         width: 100%;
-        height: 100%;
+        height: 90%;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
         border-bottom-left-radius: 0px;
@@ -48,9 +52,8 @@ export const BackResult = styled.div`
     flex-direction: column;
     align-items: center;
     @media(max-width: 375px){
-        width: 85%;
+        width: 88%;
         height: 250px;
-        margin: 10px;
     }
 `;
 
@@ -77,6 +80,7 @@ export const DivInput = styled.div`
     width: 50%;
     @media(max-width: 375px){
         width: 100%;
+        margin: 20px;
     }
 `;
 
@@ -106,6 +110,8 @@ export const Button = styled.button`
     border-radius: 5px;
     margin-top: 13px;
     margin-right: 13px;
+    align-items: center;
+    justify-content: center;
 
     font-family: Space Mono;
     font-style: normal;
@@ -219,5 +225,24 @@ export const InputNumber = styled.input`
     @media(max-width: 375px){
         text-align: right;
         font-size: 23px;
+    }
+`;
+
+export const InputCustom = styled.input`
+    border: none;
+    outline: none;
+    display: flex;
+    background: transparent; 
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    color: #00474B;
+    @media(max-width: 375px){
+        text-align: center;
+        font-size: 23px;
+        width: 100%;
+        align-self: center;
     }
 `;

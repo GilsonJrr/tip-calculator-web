@@ -4,7 +4,7 @@ import Dolar from './Image/Dolar.png';
 import Person from './Image/icon-person.png';
 import LogoApp from './Image/Logo.png';
 
-import { BackgroundApp, BackCalculator, Logo, BackResult, DivInput, InputValue, DviButton, DivAlert,
+import { BackgroundApp, BackCalculator, Logo, BackResult, DivInput, InputValue, DviButton, DivAlert, InputCustom,
          Button, TextInput, TextResult, TextValue, DivResult, ButtonReset, InputNumber, TextAlert } from './Style/GlobalStyle';
 
 function App() {
@@ -18,6 +18,11 @@ function App() {
 
   const [tipAmount, setTipAmount] = useState (0);
   const [total, setTotal] = useState (0);
+
+  const [billSty, setBillSty] = useState ({});
+  const [billHover, setBillHover] = useState (false);
+
+  const [peopleSty, setPeopleSty] = useState ({});
 
   const [buttons, setButtons ] = useState ([
     {id: 1, value: 5 , bgColor: '#00474B', selBgColor: '#33C0AF',},
@@ -46,6 +51,21 @@ function App() {
     setAlert(false)
   }
 
+  
+  function ChangeBill (){
+    setBillSty({border: 2.5, borderColor: '#33C0AF', borderStyle: 'solid'})
+    setBillHover(true) 
+  }
+  
+  useEffect(() => {
+    if(alert == true){
+      setPeopleSty({border: 2.5, borderColor: '#D89385', borderStyle: 'solid',})
+    }else{
+      setPeopleSty({})
+    }
+  },[]);
+
+
   return (
     <BackgroundApp>
 
@@ -57,9 +77,9 @@ function App() {
 
         <DivInput>
           <TextInput>Bill</TextInput>
-          <InputValue onMouseOver={()=>alert('oee')}> 
+          <InputValue style={billSty} onSelect={ChangeBill}> 
             <img src={Dolar} style={{paddingLeft: 13}}/>
-            <InputNumber value={bill} onChange={HandleBill} />
+            <InputNumber name='bill' type='text' value={bill} onChange={HandleBill} onFocus={()=> setBill('')}/>
           </InputValue>
 
           <TextInput style={{marginTop: 57}} >Select Tip %</TextInput>
@@ -93,9 +113,9 @@ function App() {
             { alert && <TextAlert>Can't be zero</TextAlert> }
           </DivAlert>
         
-          <InputValue> 
+          <InputValue style={peopleSty} > 
             <img src={Person} style={{paddingLeft: 13}}/>
-            <InputNumber value={people} onChange={HandlePeople} />
+            <InputNumber value={people} onChange={HandlePeople}/>
           </InputValue>
 
         </DivInput>
@@ -141,6 +161,7 @@ export default App;
 export function Buttons (props) {
   
   const [selected, setSelected] = useState (props.bgColor)
+  const [custom, setCustom] = useState ('Custom')
   
   const [numbColor, setNumbColor] = useState ('#FFFFFF')
 
@@ -154,13 +175,17 @@ export function Buttons (props) {
     setNumbColor('#FFFFFF');
   }
 
+  function HandleCustom (event){
+    setCustom(event.target.value)
+  }
+
   function HandlePorcentage () {
 
     if(props.people > 0){
       props.setPressed(props.id)
     
 
-    if(props.value == 'Custom'){
+    if(props.value === 'Custom'){
     }else{
       props.setTipAmount((props.value/100)*(props.bill/props.people))
       props.setTotal((props.bill/props.people)+((props.value/100)*(props.bill/props.people)))
@@ -177,20 +202,19 @@ export function Buttons (props) {
 
   return(
       <div>
-        { props.pressed === props.id ?
-        <Button
-          onClick={HandlePorcentage}
-          style={{background: '#33C0AF', color: numbColor, cursor: 'pointer' }} >
-              { props.value === 'Custom' ? props.value: props.value +'%' }
-        </Button>
-         :
+        { props.value > 0 &&
         <Button
           onClick={HandlePorcentage}
           style={{background: selected, color: numbColor, cursor: 'pointer' }} 
           onMouseOver={MouseOver} 
           onMouseOut={MouseOut}>
-              { props.value === 'Custom' ? props.value: props.value +'%' }
+              {props.value}%
         </Button> }
+
+        { props.value === 'Custom' && 
+        <Button style={{background: props.bgColor}}>
+              <InputCustom name='bill' type='text' value={custom} onChange={HandleCustom} onFocus={()=> setCustom('')}/>
+        </Button>}
       </div>
   );
 }

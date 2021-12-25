@@ -159,8 +159,28 @@ export const TextInput = styled.div`
     color: #406566;
     margin-bottom: 4px;
     @media(max-width: 375px){
-        padding-left: 35px;
+        padding-left: 25px;
     }
+`;
+
+export const TextAlert = styled.div`
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #D89385;
+    @media(max-width: 375px){
+        font-size: 12px;
+        padding-right: 25px;
+    }
+`;
+
+export const DivAlert = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
 `;
 
 export const TextResult = styled.div`

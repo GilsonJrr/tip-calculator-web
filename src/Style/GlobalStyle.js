@@ -13,27 +13,30 @@ export const BackgroundApp = styled.div`
 `;
 
 export const Logo = styled.div`
-    margin-top: 20%;
-    padding-bottom: 20px;
+    margin-top: 12%;
+    height: 8%;
+    padding-bottom: 2%;
     @media(max-width: 375px){
-        top: 30px;
         position: relative;
+        margin-top: 15%;
     }
 `;
 
 export const BackCalculator = styled.div`
     //web
     width: 920px;
-    height: 480%;
+    height: 60%;
+    max-height: 480px;
     background: #FFFFFF;
     border-radius: 25px;
     display: flex;
     margin-bottom: 20%;
     //mobile
     @media(max-width: 375px){
-        margin-top: 60px;
+        margin-top: 30px;
         width: 100%;
         height: 90%;
+        max-height: 90%;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
         border-bottom-left-radius: 0px;
@@ -41,6 +44,7 @@ export const BackCalculator = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-bottom: 0px;
     }
 `;
 
@@ -123,7 +127,7 @@ export const Button = styled.button`
 
     @media(max-width: 375px){
         align-self: center;
-        width: 152px;
+        width: 155px;
         margin-right: 5px;
         margin-left: 5px;
     }
@@ -135,7 +139,10 @@ export const DviButton = styled.div`
     width: 100%;
     @media(max-width: 375px){
         align-self: center;
-        width: 90%;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+
     }
 `;
 

@@ -11,7 +11,9 @@ function App() {
 
   const [selected, setSelected] = useState ('#0D686D');
   const [pressed, setPressed] = useState (0)
-  const [alert, setAlert] = useState (false) 
+  const [alert, setAlert] = useState (false)
+  
+  const [custom, setCustom] = useState ('Custom')
 
   const [bill, setBill] = useState (0);
   const [people, setPeople] = useState (0);
@@ -53,22 +55,32 @@ function App() {
     setPressed(0);
     setAlert(false)
     setReset(false)
+    setCustom('Custom')
+    setBillSty({cursor: 'pointer'})
+    setPeopleSty({cursor: 'pointer'})
   }
 
+  function HandleClear (){
+    if(bill != ''){
+      setBillSty({cursor: 'pointer'})
+    }
+    if(people != ''){
+      setPeopleSty({cursor: 'pointer'})
+    }
+  }
   
   function ChangeBill (){
     setBillSty({border: 2.5, borderColor: '#33C0AF', borderStyle: 'solid', cursor: 'pointer'})
+    setPeopleSty({cursor: 'pointer'})
     setBill('')
   }
-  
-  useEffect(() => {
-    if(alert == true){
-      setPeopleSty({border: 2.5, borderColor: '#D89385', borderStyle: 'solid',})
-    }else{
-      setPeopleSty({})
-    }
-  },[]);
 
+  function ChangePeople (){
+    setPeopleSty({border: 2.5, borderColor: '#33C0AF', borderStyle: 'solid', cursor: 'pointer'})
+    setBillSty({cursor: 'pointer'})
+    setPeople('')
+    setAlert(false)
+  }
 
   return (
     <BackgroundApp>
@@ -77,7 +89,7 @@ function App() {
         <img src={LogoApp}/>
       </Logo>
 
-      <BackCalculator>
+      <BackCalculator onMouseOver={HandleClear}>
 
         <DivInput>
           <TextInput>Bill</TextInput>
@@ -106,6 +118,9 @@ function App() {
                   setTipAmount={setTipAmount}
                   setPressed={setPressed}
                   setAlert={setAlert}
+                  setPeopleSty={setPeopleSty}
+                  custom={custom}
+                  setCustom={setCustom}
                 />
               </div>
             );
@@ -119,7 +134,7 @@ function App() {
         
           <InputValue style={peopleSty} > 
             <img src={Person} style={{paddingLeft: 13}}/>
-            <InputNumber value={people} onChange={HandlePeople} />
+            <InputNumber value={people} onChange={HandlePeople} onFocus={ChangePeople}/>
           </InputValue>
 
         </DivInput>
@@ -164,13 +179,36 @@ function App() {
 
 export default App;
 
+//TODO: resolver os botoes de porcentagem(ficar selecionado e voltar ao padr'ao quando reset)
+
 export function Buttons (props) {
   
   const [selected, setSelected] = useState (props.bgColor)
-  const [custom, setCustom] = useState ('Custom')
-  const [pressed, setPressed] = useState (0)
+  const [disabled, setDisabled] = useState (true)
+
+  const [selectedColor, setSelectedColor] = useState ('#00474B')
   
   const [numbColor, setNumbColor] = useState ('#FFFFFF')
+
+  useEffect(() => {
+
+    if(props.custom > 0){
+      props.setTipAmount((props.custom/100)*(props.bill/props.people))
+      props.setTotal((props.bill/props.people)+((props.custom/100)*(props.bill/props.people)))
+      props.setPressed(0)
+    }
+
+    if(props.people > 0 && props.bill > 0){
+      setDisabled(false)
+    }
+
+    //FIXME: Achar uma slucao para o custom ficar sende cetado caso o pressed seja 0
+
+    if(props.pressed > 0 ){
+      props.setCustom('Custom')
+    }
+
+  });
 
   function MouseOver () {
     setSelected(props.selBgColor);
@@ -182,8 +220,26 @@ export function Buttons (props) {
     setNumbColor('#FFFFFF');
   }
 
+
   function HandleCustom (event){
-    setCustom(event.target.value)
+
+    if(props.people > 0){
+      props.setCustom(event.target.value)
+    }
+
+    if(props.people == 0){
+      props.setAlert(true)
+      props.setPeopleSty({border: 2.5, borderColor: '#D89385', borderStyle: 'solid',})
+    }else{
+      props.setAlert(false)
+    }
+    
+  }
+
+  function ChangeCustom (){
+    if(props.people > 0){
+      props.setCustom('')
+    }
   }
 
   function HandlePorcentage () {
@@ -201,17 +257,16 @@ export function Buttons (props) {
 
     if(props.people == 0){
       props.setAlert(true)
+      props.setPeopleSty({border: 2.5, borderColor: '#D89385', borderStyle: 'solid',})
     }else{
       props.setAlert(false)
     }
-
-    setPressed(props.id)
 
   }
 
   return(
       <div>
-        { props.value > 0 &&
+        { props.value > 0 && props.pressed != props.id &&
         <Button
           onClick={HandlePorcentage}
           style={{background: selected, color: numbColor, cursor: 'pointer' }} 
@@ -220,9 +275,15 @@ export function Buttons (props) {
               {props.value}%
         </Button> }
 
+        { props.value > 0 && props.pressed === props.id &&
+        <Button
+          style={{background: '#33C0AF', color: numbColor, cursor: 'pointer' }}>
+              {props.value}%
+        </Button> }
+
         { props.value === 'Custom' && 
         <Button style={{background: props.bgColor}}>
-              <InputCustom name='bill' type='text' value={custom} onChange={HandleCustom} onFocus={()=> setCustom('')}/>
+              <InputCustom name='bill' type='text' value={props.custom} onChange={HandleCustom} onFocus={ChangeCustom} disabled={disabled}/>
         </Button>}
       </div>
   );

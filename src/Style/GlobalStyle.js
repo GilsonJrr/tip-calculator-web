@@ -13,8 +13,8 @@ export const BackgroundApp = styled.div`
 `;
 
 export const Logo = styled.div`
-    position: absolute;
-    top: 136px;
+    margin-top: 20%;
+    padding-bottom: 20px;
     @media(max-width: 375px){
         top: 30px;
         position: relative;
@@ -24,10 +24,11 @@ export const Logo = styled.div`
 export const BackCalculator = styled.div`
     //web
     width: 920px;
-    height: 480px;
+    height: 480%;
     background: #FFFFFF;
     border-radius: 25px;
     display: flex;
+    margin-bottom: 20%;
     //mobile
     @media(max-width: 375px){
         margin-top: 60px;
@@ -117,7 +118,8 @@ export const Button = styled.button`
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
-    color: #FFFFFF;
+    color: #FFFFFF ;
+    text-align: center;
 
     @media(max-width: 375px){
         align-self: center;
@@ -142,7 +144,7 @@ export const ButtonReset = styled.button`
     outline: none;
     width: 307px;
     height: 46px;
-    background: #0D686D;
+    background: ${props => (props.reset == false ? '#0D686D' : '#33C0AF')};
     border-radius: 5px;
     margin-top: 100px;
 
@@ -221,7 +223,7 @@ export const InputNumber = styled.input`
     font-weight: bold;
     font-size: 28px;
     text-align: right;
-    color: #A8BBBC;
+    color: ${props => (props.value > 0 ? `#00474B` : `#A8BBBC`)};
     @media(max-width: 375px){
         text-align: right;
         font-size: 23px;
@@ -231,18 +233,16 @@ export const InputNumber = styled.input`
 export const InputCustom = styled.input`
     border: none;
     outline: none;
-    display: flex;
+    width: 100px;
     background: transparent; 
     font-family: Space Mono;
     font-style: normal;
     font-weight: bold;
-    font-size: 28px;
     text-align: center;
+    font-size: 23px;
     color: #00474B;
     @media(max-width: 375px){
-        text-align: center;
         font-size: 23px;
-        width: 100%;
-        align-self: center;
+        width: 100px;
     }
 `;

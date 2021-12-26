@@ -11,7 +11,7 @@ function App() {
 
   const [selected, setSelected] = useState ('#0D686D');
   const [pressed, setPressed] = useState (0)
-  const [alert, setAlert] = useState (false)
+  const [alert, setAlert] = useState (false) 
 
   const [bill, setBill] = useState (0);
   const [people, setPeople] = useState (0);
@@ -21,6 +21,8 @@ function App() {
 
   const [billSty, setBillSty] = useState ({});
   const [billHover, setBillHover] = useState (false);
+
+  const [reset,setReset] = useState(false);
 
   const [peopleSty, setPeopleSty] = useState ({});
 
@@ -35,6 +37,7 @@ function App() {
 
   function HandleBill (event){
     setBill(event.target.value)
+    setReset(true)
   }
 
   function HandlePeople (event){
@@ -49,12 +52,13 @@ function App() {
     setTipAmount(0);
     setPressed(0);
     setAlert(false)
+    setReset(false)
   }
 
   
   function ChangeBill (){
-    setBillSty({border: 2.5, borderColor: '#33C0AF', borderStyle: 'solid'})
-    setBillHover(true) 
+    setBillSty({border: 2.5, borderColor: '#33C0AF', borderStyle: 'solid', cursor: 'pointer'})
+    setBill('')
   }
   
   useEffect(() => {
@@ -77,9 +81,9 @@ function App() {
 
         <DivInput>
           <TextInput>Bill</TextInput>
-          <InputValue style={billSty} onSelect={ChangeBill}> 
+          <InputValue style={billSty}> 
             <img src={Dolar} style={{paddingLeft: 13}}/>
-            <InputNumber name='bill' type='text' value={bill} onChange={HandleBill} onFocus={()=> setBill('')}/>
+            <InputNumber name='bill' type='text' value={bill} onChange={HandleBill} onFocus={ChangeBill}/>
           </InputValue>
 
           <TextInput style={{marginTop: 57}} >Select Tip %</TextInput>
@@ -115,7 +119,7 @@ function App() {
         
           <InputValue style={peopleSty} > 
             <img src={Person} style={{paddingLeft: 13}}/>
-            <InputNumber value={people} onChange={HandlePeople}/>
+            <InputNumber value={people} onChange={HandlePeople} />
           </InputValue>
 
         </DivInput>
@@ -142,9 +146,11 @@ function App() {
 
           <ButtonReset
             onClick={HandleReset} 
-            style={{background: selected, cursor: 'pointer'}} 
+            style={{cursor: 'pointer'}} 
             onMouseOver={ ()=> setSelected('#33C0AF') } 
-            onMouseOut={ ()=> setSelected('#0D686D') }>
+            onMouseOut={ ()=> setSelected('#0D686D') }
+            reset={reset}
+          >
             Reset
           </ButtonReset>
 
@@ -162,6 +168,7 @@ export function Buttons (props) {
   
   const [selected, setSelected] = useState (props.bgColor)
   const [custom, setCustom] = useState ('Custom')
+  const [pressed, setPressed] = useState (0)
   
   const [numbColor, setNumbColor] = useState ('#FFFFFF')
 
@@ -197,6 +204,8 @@ export function Buttons (props) {
     }else{
       props.setAlert(false)
     }
+
+    setPressed(props.id)
 
   }
 

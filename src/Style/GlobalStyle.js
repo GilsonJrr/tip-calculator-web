@@ -24,13 +24,15 @@ export const Logo = styled.div`
 
 export const BackCalculator = styled.div`
     //web
-    width: 920px;
+    max-width: 920px;
     height: 60%;
     max-height: 480px;
+    min-height: 400px;
     background: #FFFFFF;
     border-radius: 25px;
     display: flex;
     margin-bottom: 20%;
+    justify-content: space-evenly;
     //mobile
     @media(max-width: 375px){
         margin-top: 30px;
@@ -49,16 +51,35 @@ export const BackCalculator = styled.div`
 `;
 
 export const BackResult = styled.div`
-    width: 50%;
+    width: 49%;
     background: #00474B;
     border-radius: 15px;
-    margin: 30px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     @media(max-width: 375px){
         width: 88%;
         height: 250px;
+    }
+`;
+
+export const DivInput = styled.div`
+    width: 49%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 30px;
+    @media(max-width: 375px){
+        width: 100%;
+        height: 50%;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        margin-right: 0px;
     }
 `;
 
@@ -68,55 +89,70 @@ export const DivResult = styled.div`
     width: 307px;
     justify-content: space-between;
     height: 71px; 
-    align-items: center; 
-    margin-top: 26px; 
-    margin-bottom: 26px;
+    align-items: center;
+    //margin-top: 26px; 
+    //margin-bottom: 26px;
     @media(max-width: 375px){
-        margin-top: 5px;
-        margin-bottom: 0px;
         width: 85%;
     }
 `;
 
-export const DivInput = styled.div`
+export const DviSections = styled.div`
     display: flex;
-    margin: 40px;
     flex-direction: column;
-    width: 50%;
     @media(max-width: 375px){
-        width: 100%;
-        margin: 20px;
+        margin-top: 25px;
+        margin-bottom: 1px;
     }
 `;
 
 export const InputValue = styled.div`
     display: flex;
-    width: 376px;
+    width: 375px;
     height: 45px;
     background: #EEF4F8;
     border-radius: 5px;
+    
     align-items: center;
-    justify-content: space-between;
-    //padding-left: 13px;
-    padding-right: 13px;
+    justify-content: center;
+    align-content: center;
+    padding-right: 1px;
+    padding-left: 1px;
     @media(max-width: 375px){
-        width: 85%;
+        width: 86%;
         align-self: center;
-        margin-bottom: -30px;
+    }
+`;
+
+export const InputNumber = styled.input`
+    border: none;
+    outline: none;
+    display: flex;
+    background: transparent; 
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: right;
+    width: 90%;
+    color: ${props => (props.value > 0 ? `#00474B` : `#A8BBBC`)};
+    @media(max-width: 375px){
+        //text-align: right;
+        font-size: 23px;
     }
 `;
 
 export const Button = styled.button`
     border: none;
     outline: none;
-    width: 117px;
+    width: 111px;
     height: 48px;
     background: #00474B;
     border-radius: 5px;
-    margin-top: 13px;
-    margin-right: 13px;
+    margin: 8px;
     align-items: center;
     justify-content: center;
+    align-self: center;
 
     font-family: Space Mono;
     font-style: normal;
@@ -126,7 +162,6 @@ export const Button = styled.button`
     text-align: center;
 
     @media(max-width: 375px){
-        align-self: center;
         width: 155px;
         margin-right: 5px;
         margin-left: 5px;
@@ -136,13 +171,11 @@ export const Button = styled.button`
 export const DviButton = styled.div`
     display: flex;
     flex-wrap: wrap; 
-    width: 100%;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
     @media(max-width: 375px){
-        align-self: center;
-        align-items: center;
         width: 100%;
-        justify-content: center;
-
     }
 `;
 
@@ -153,7 +186,8 @@ export const ButtonReset = styled.button`
     height: 46px;
     background: ${props => (props.reset == false ? '#0D686D' : '#33C0AF')};
     border-radius: 5px;
-    margin-top: 100px;
+    
+    //margin-top: 100px;
 
     font-family: Space Mono;
     font-style: normal;
@@ -161,8 +195,8 @@ export const ButtonReset = styled.button`
     font-size: 18px;
     color: #00474B;
     @media(max-width: 375px){
-        margin-top: 30px;
         width: 85%;
+        margin-bottom: 15px;
     }
 `;
 
@@ -172,7 +206,8 @@ export const TextInput = styled.div`
     font-weight: bold;
     font-size: 18px;
     color: #406566;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
+    //margin-bottom: 4px;
     @media(max-width: 375px){
         padding-left: 25px;
     }
@@ -195,7 +230,7 @@ export const DivAlert = styled.div`
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
-    width: 100%;
+    width: 375px;
 `;
 
 export const TextResult = styled.div`
@@ -217,23 +252,6 @@ export const TextValue = styled.div`
     color: #33C0AF;
     @media(max-width: 375px){
         font-size: 32px;
-    }
-`;
-
-export const InputNumber = styled.input`
-    border: none;
-    outline: none;
-    display: flex;
-    background: transparent; 
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-    text-align: right;
-    color: ${props => (props.value > 0 ? `#00474B` : `#A8BBBC`)};
-    @media(max-width: 375px){
-        text-align: right;
-        font-size: 23px;
     }
 `;
 

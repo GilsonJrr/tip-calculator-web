@@ -5,7 +5,7 @@ import Person from './Image/icon-person.png';
 import LogoApp from './Image/Logo.png';
 
 import { BackgroundApp, BackCalculator, Logo, BackResult, DivInput, InputValue, DviButton, DivAlert, InputCustom,
-         Button, TextInput, TextResult, TextValue, DivResult, ButtonReset, InputNumber, TextAlert } from './Style/GlobalStyle';
+         Button, TextInput, TextResult, TextValue, DivResult, ButtonReset, InputNumber, TextAlert, DviSections } from './Style/GlobalStyle';
 
 function App() {
 
@@ -92,50 +92,56 @@ function App() {
       <BackCalculator onMouseOver={HandleClear}>
 
         <DivInput>
-          <TextInput>Bill</TextInput>
-          <InputValue style={billSty}> 
-            <img src={Dolar} style={{paddingLeft: 13}}/>
-            <InputNumber name='bill' type='text' value={bill} onChange={HandleBill} onFocus={ChangeBill}/>
-          </InputValue>
 
-          <TextInput style={{marginTop: 57}} >Select Tip %</TextInput>
+          <DviSections>
+            <TextInput>Bill</TextInput>
+            <InputValue style={billSty}> 
+              <img src={Dolar} />
+              <InputNumber name='bill' type='text' value={bill} onChange={HandleBill} onFocus={ChangeBill}/>
+            </InputValue>
+          </DviSections>
+
+          <DviSections>
+            <TextInput>Select Tip %</TextInput>
+            <DviButton>
+            {buttons.map((item) => {
+              return(
+                <div key={item.id}>
+                  <Buttons 
+                    value={item.value}
+                    id={item.id}
+                    bgColor={item.bgColor}
+                    selBgColor={item.selBgColor}
+                    bill={bill}
+                    people={people}
+                    total={total}
+                    tipAmount={tipAmount}
+                    pressed={pressed}
+                    setTotal={setTotal}
+                    setTipAmount={setTipAmount}
+                    setPressed={setPressed}
+                    setAlert={setAlert}
+                    setPeopleSty={setPeopleSty}
+                    custom={custom}
+                    setCustom={setCustom}
+                  />
+                </div>
+              );
+            })}
+            </DviButton>
+          </DviSections>
           
-          <DviButton>
-          {buttons.map((item) => {
-            return(
-              <div key={item.id}>
-                <Buttons 
-                  value={item.value}
-                  id={item.id}
-                  bgColor={item.bgColor}
-                  selBgColor={item.selBgColor}
-                  bill={bill}
-                  people={people}
-                  total={total}
-                  tipAmount={tipAmount}
-                  pressed={pressed}
-                  setTotal={setTotal}
-                  setTipAmount={setTipAmount}
-                  setPressed={setPressed}
-                  setAlert={setAlert}
-                  setPeopleSty={setPeopleSty}
-                  custom={custom}
-                  setCustom={setCustom}
-                />
-              </div>
-            );
-          })}
-          </DviButton>
+          <DviSections>
+            <DivAlert>
+              <TextInput>Number of People</TextInput>
+              { alert && <TextAlert>Can't be zero</TextAlert> }
+            </DivAlert>
           
-          <DivAlert>
-            <TextInput style={{marginTop: 42}} >Number of People</TextInput>
-            { alert && <TextAlert>Can't be zero</TextAlert> }
-          </DivAlert>
-        
-          <InputValue style={peopleSty} > 
-            <img src={Person} style={{paddingLeft: 13}}/>
-            <InputNumber value={people} onChange={HandlePeople} onFocus={ChangePeople}/>
-          </InputValue>
+            <InputValue style={peopleSty} > 
+              <img src={Person} />
+              <InputNumber value={people} onChange={HandlePeople} onFocus={ChangePeople}/>
+            </InputValue>
+          </DviSections>
 
         </DivInput>
 
@@ -158,7 +164,7 @@ function App() {
             </div>
             <TextValue>${total.toFixed(2)}</TextValue>
           </DivResult>
-
+          
           <ButtonReset
             onClick={HandleReset} 
             style={{cursor: 'pointer'}} 
@@ -204,7 +210,7 @@ export function Buttons (props) {
 
     //FIXME: Achar uma slucao para o custom ficar sende cetado caso o pressed seja 0
 
-    if(props.pressed > 0 ){
+    if(props.pressed > 0 || props.custom > 0){
       props.setCustom('Custom')
     }
 

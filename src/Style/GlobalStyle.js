@@ -66,6 +66,7 @@ export const BackResult = styled.div`
         width: 88%;
         height: 250px;
         margin: 0px;
+        margin-bottom: 30px;
     }
 `;
 
@@ -164,9 +165,16 @@ export const Button = styled.button`
     text-align: center;
 
     @media(max-width: 600px){
-        width: 155px;
+        width: 90%;
+        max-width: 200px;
+        min-width: 165px;
         margin-right: 5px;
         margin-left: 5px;
+    }
+    @media(max-width: 380px){
+        width: 90%;
+        max-width: 155px;
+        min-width: 155px;
     }
 `;
 
@@ -194,7 +202,7 @@ export const ButtonReset = styled.button`
     font-family: Space Mono;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     color: #00474B;
     @media(max-width: 600px){
         width: 85%;

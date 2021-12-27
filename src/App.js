@@ -45,6 +45,7 @@ function App() {
   function HandlePeople (event){
     setPeople(event.target.value)
     setAlert(false)
+    setReset(true)
   }
 
   function HandleReset (){
@@ -172,7 +173,7 @@ function App() {
             onMouseOut={ ()=> setSelected('#0D686D') }
             reset={reset}
           >
-            Reset
+            RESET
           </ButtonReset>
 
         </BackResult>
@@ -206,12 +207,6 @@ export function Buttons (props) {
 
     if(props.people > 0 && props.bill > 0){
       setDisabled(false)
-    }
-
-    //FIXME: Achar uma slucao para o custom ficar sende cetado caso o pressed seja 0
-
-    if(props.pressed > 0 || props.custom > 0){
-      props.setCustom('Custom')
     }
 
   });
@@ -252,15 +247,11 @@ export function Buttons (props) {
 
     if(props.people > 0){
       props.setPressed(props.id)
-    
-
-    if(props.value === 'Custom'){
-    }else{
       props.setTipAmount((props.value/100)*(props.bill/props.people))
       props.setTotal((props.bill/props.people)+((props.value/100)*(props.bill/props.people)))
+      props.setCustom('Custom')
     }
-    }
-
+    
     if(props.people == 0){
       props.setAlert(true)
       props.setPeopleSty({border: 2.5, borderColor: '#D89385', borderStyle: 'solid',})
@@ -275,7 +266,7 @@ export function Buttons (props) {
         { props.value > 0 && props.pressed != props.id &&
         <Button
           onClick={HandlePorcentage}
-          style={{background: selected, color: numbColor, cursor: 'pointer' }} 
+          style={{background: '#00474B', cursor: 'pointer' }} 
           onMouseOver={MouseOver} 
           onMouseOut={MouseOut}>
               {props.value}%

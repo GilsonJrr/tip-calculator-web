@@ -25,9 +25,10 @@ export const Logo = styled.div`
 export const BackCalculator = styled.div`
     //web
     max-width: 920px;
+    min-width: 920px;
     height: 60%;
     max-height: 480px;
-    min-height: 400px;
+    min-height: 480px;
     background: #FFFFFF;
     border-radius: 25px;
     display: flex;
@@ -36,6 +37,8 @@ export const BackCalculator = styled.div`
     //mobile
     @media(max-width: 375px){
         margin-top: 30px;
+        max-width: 100%;
+        min-width: 100%;
         width: 100%;
         height: 90%;
         max-height: 90%;
@@ -52,9 +55,9 @@ export const BackCalculator = styled.div`
 
 export const BackResult = styled.div`
     width: 49%;
+    margin: 30px;
     background: #00474B;
     border-radius: 15px;
-    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,24 +65,23 @@ export const BackResult = styled.div`
     @media(max-width: 375px){
         width: 88%;
         height: 250px;
+        margin: 0px;
     }
 `;
 
 export const DivInput = styled.div`
     width: 49%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding-left: 30px;
     @media(max-width: 375px){
         width: 100%;
         height: 50%;
         padding-top: 0px;
-        padding-bottom: 0px;
+        padding-bottom: 30px;
         padding-left: 0px;
-        margin-right: 0px;
+        margin: 0px;
     }
 `;
 
@@ -108,7 +110,7 @@ export const DviSections = styled.div`
 
 export const InputValue = styled.div`
     display: flex;
-    width: 375px;
+    width: 100%;
     height: 45px;
     background: #EEF4F8;
     border-radius: 5px;
@@ -145,7 +147,7 @@ export const InputNumber = styled.input`
 export const Button = styled.button`
     border: none;
     outline: none;
-    width: 111px;
+    width: 114px;
     height: 48px;
     background: #00474B;
     border-radius: 5px;
@@ -171,11 +173,11 @@ export const Button = styled.button`
 export const DviButton = styled.div`
     display: flex;
     flex-wrap: wrap; 
-    width: 90%;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
     @media(max-width: 375px){
         width: 100%;
+        justify-content: center;
     }
 `;
 

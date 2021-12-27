@@ -7,7 +7,7 @@ export const BackgroundApp = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         height: 100%;
     }
 `;
@@ -16,7 +16,7 @@ export const Logo = styled.div`
     margin-top: 12%;
     height: 8%;
     padding-bottom: 2%;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         position: relative;
         margin-top: 15%;
     }
@@ -35,7 +35,7 @@ export const BackCalculator = styled.div`
     margin-bottom: 20%;
     justify-content: space-evenly;
     //mobile
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         margin-top: 30px;
         max-width: 100%;
         min-width: 100%;
@@ -62,7 +62,7 @@ export const BackResult = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 88%;
         height: 250px;
         margin: 0px;
@@ -75,7 +75,7 @@ export const DivInput = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 100%;
         height: 50%;
         padding-top: 0px;
@@ -94,7 +94,7 @@ export const DivResult = styled.div`
     align-items: center;
     //margin-top: 26px; 
     //margin-bottom: 26px;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 85%;
     }
 `;
@@ -102,7 +102,7 @@ export const DivResult = styled.div`
 export const DviSections = styled.div`
     display: flex;
     flex-direction: column;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         margin-top: 25px;
         margin-bottom: 1px;
     }
@@ -120,7 +120,7 @@ export const InputValue = styled.div`
     align-content: center;
     padding-right: 1px;
     padding-left: 1px;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 86%;
         align-self: center;
     }
@@ -138,7 +138,7 @@ export const InputNumber = styled.input`
     text-align: right;
     width: 90%;
     color: ${props => (props.value > 0 ? `#00474B` : `#A8BBBC`)};
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         //text-align: right;
         font-size: 23px;
     }
@@ -163,7 +163,7 @@ export const Button = styled.button`
     color: #FFFFFF ;
     text-align: center;
 
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 155px;
         margin-right: 5px;
         margin-left: 5px;
@@ -175,7 +175,7 @@ export const DviButton = styled.div`
     flex-wrap: wrap; 
     width: 100%;
     justify-content: flex-start;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 100%;
         justify-content: center;
     }
@@ -196,7 +196,7 @@ export const ButtonReset = styled.button`
     font-weight: bold;
     font-size: 18px;
     color: #00474B;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         width: 85%;
         margin-bottom: 15px;
     }
@@ -210,7 +210,7 @@ export const TextInput = styled.div`
     color: #406566;
     margin-bottom: 10px;
     //margin-bottom: 4px;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         padding-left: 25px;
     }
 `;
@@ -221,7 +221,7 @@ export const TextAlert = styled.div`
     font-weight: bold;
     font-size: 18px;
     color: #D89385;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         font-size: 12px;
         padding-right: 25px;
     }
@@ -241,7 +241,7 @@ export const TextResult = styled.div`
     font-weight: bold;
     font-size: 18px;
     color: #FFFFFF;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         font-size: 14px;
     }
 `;
@@ -252,7 +252,7 @@ export const TextValue = styled.div`
     font-weight: bold;
     font-size: 48px;
     color: #33C0AF;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         font-size: 32px;
     }
 `;
@@ -268,7 +268,7 @@ export const InputCustom = styled.input`
     text-align: center;
     font-size: 23px;
     color: #00474B;
-    @media(max-width: 375px){
+    @media(max-width: 400px){
         font-size: 23px;
         width: 100px;
     }
